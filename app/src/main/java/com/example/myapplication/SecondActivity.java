@@ -2,8 +2,8 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +16,8 @@ import static com.example.myapplication.FirstActivity.FIRST_DATA_KEY;
  * @author jere
  */
 public class SecondActivity extends AppCompatActivity {
-    private Intent mIntent;
     public static final String SECOND_DATA_KEY = "SECOND_DATA_KEY";
+    private Intent mIntent;
     private EditText mEditText;
 
     @Override
