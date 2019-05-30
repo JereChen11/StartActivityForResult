@@ -31,6 +31,15 @@ public class FirstActivity extends AppCompatActivity {
         mTextView = findViewById(R.id.first_tv);
         mEditText = findViewById(R.id.first_et);
 
+        mEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboardFrom(v);
+                }
+            }
+        });
+
         mIntent = new Intent(this, SecondActivity.class);
         Button okBtn = findViewById(R.id.first_ok_btn);
 
@@ -60,9 +69,9 @@ public class FirstActivity extends AppCompatActivity {
         }
     }
 
-    public void hideKeyboardFrom() {
+    public void hideKeyboardFrom(View v) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
 
 }
