@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -34,6 +35,14 @@ public class SecondActivity extends AppCompatActivity {
         textView.setText(firstActivityData);
 
         mEditText = findViewById(R.id.second_et);
+        mEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboardFrom(v);
+                }
+            }
+        });
 
         Button okBtn = findViewById(R.id.second_ok_btn);
         okBtn.setOnClickListener(new View.OnClickListener() {
@@ -47,5 +56,10 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void hideKeyboardFrom(View v) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
 }
